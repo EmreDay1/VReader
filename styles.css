@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f5f5dc; /* Beige background */
+    color: #0055aa; /* Dark blue text similar to Vim */
+    font-family: 'Courier New', monospace;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#vim-container {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    background-color: #f5f5dc; /* Beige background */
+    position: relative;
+    border: 1px solid #999;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+#vim-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+}
+
+/* Add subtle scanline effect */
+#vim-screen::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.03) 0%,
+        rgba(255, 255, 255, 0) 50%
+    );
+    background-size: 100% 2px;
+    pointer-events: none;
+}
+
+.vim-content {
+    text-align: center;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.title {
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.version {
+    margin-bottom: 3px;
+}
+
+.section-title {
+    font-weight: bold;
+    text-align: left;
+    margin: 0 auto;
+    width: 450px;
+    padding-left: 12px;
+    border-bottom: 1px solid #0055aa;
+    color: #0055aa;
+    margin-bottom: 4px;
+}
+
+.command {
+    text-align: left;
+    margin: 0 auto;
+    width: 450px;
+    white-space: pre;
+    font-family: 'Courier New', monospace;
+}
+
+.desc {
+    color: #0055aa;
+}
+
+.key {
+    color: #3333ff; /* Brighter blue for special keys */
+    font-weight: bold;
+}
+
+.spacer {
+    height: 15px;
+}
+
+.spacer-small {
+    height: 8px;
+}
+
+.note {
+    margin-top: 10px;
+    font-style: italic;
+    color: #0055aa;
+}
+
+.position {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.9em;
+}
+
+/* Help modal styling */
+#help-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#help-modal.hidden {
+    display: none;
+}
+
+#help-content {
+    width: 700px;
+    height: 500px;
+    background-color: #e6e0c0; /* Darker beige for help modal */
+    border: 1px solid #666;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.help-header {
+    text-align: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #0055aa;
+    padding-bottom: 5px;
+}
+
+.help-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #0055aa;
+}
+
+.help-subtitle {
+    font-size: 0.85em;
+    color: #666;
+    font-style: italic;
+}
+
+.help-section {
+    margin-bottom: 15px;
+}
+
+.help-section-title {
+    font-weight: bold;
+    color: #0055aa;
+    border-bottom: 1px solid #0055aa;
+    margin-bottom: 5px;
+    padding-left: 5px;
+}
+
+.help-command {
+    text-align: left;
+    white-space: pre;
+    font-family: 'Courier New', monospace;
+    padding-left: 20px;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.help-desc {
+    color: #0055aa;
+}
+
+.help-key {
+    color: #3333ff;
+    font-weight: bold;
+}
+
+#help-position {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 0.85em;
+    color: #666;
+}
+
+/* Highlighted row in the help modal */
+.help-command.highlight {
+    background-color: #aaa088;
+    color: white;
+}
+
+.help-command.highlight .help-desc {
+    color: white;
+}

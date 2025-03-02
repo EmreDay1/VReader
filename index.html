@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VimDoc Reader</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="vim-container">
+        <div id="vim-screen">
+            <div class="vim-content">
+                <div class="spacer"></div>
+                <div class="title">VimDoc Reader - Vim-Style Navigation</div>
+                <div class="spacer"></div>
+                <div class="version">version 1.0.0</div>
+                <div class="spacer"></div>
+                
+                <div class="section-title">Basic Navigation</div>
+                <div class="command">h, j, k, l        <span class="desc">Move left, down, up, right</span></div>
+                <div class="command">w, b, e           <span class="desc">Navigate by words</span></div>
+                <div class="command">gg, G             <span class="desc">Go to start/end of document</span></div>
+                <div class="command"><span class="key">Ctrl</span>+f, <span class="key">Ctrl</span>+b      <span class="desc">Page down/up</span></div>
+                <div class="command">zz, zt, zb        <span class="desc">Center/top/bottom current line</span></div>
+                
+                <div class="spacer-small"></div>
+                <div class="section-title">Search & Marks</div>
+                <div class="command">/pattern          <span class="desc">Search forward for pattern</span></div>
+                <div class="command">n, N              <span class="desc">Next/previous search result</span></div>
+                <div class="command">m{a-z}            <span class="desc">Set bookmark at current position</span></div>
+                <div class="command">'a                <span class="desc">Jump to bookmark a</span></div>
+                
+                <div class="spacer-small"></div>
+                <div class="section-title">Commands</div>
+                <div class="command">:q                <span class="desc">Quit document reader</span></div>
+                <div class="command">:w                <span class="desc">Save annotations</span></div>
+                <div class="command">:e filename       <span class="desc">Open document</span></div>
+                <div class="command">:help             <span class="desc">Show help documentation</span></div>
+                <div class="command">:stats            <span class="desc">Show document statistics</span></div>
+                
+                <div class="spacer-small"></div>
+                <div class="note">Press <span class="key">?</span> at any time to show all keyboard shortcuts</div>
+                <div class="cursor">█</div>
+            </div>
+            <div class="position">0,0-1</div>
+        </div>
+    </div>
+    
+    <!-- Help Modal (hidden by default) -->
+    <div id="help-modal" class="hidden">
+        <div id="help-content">
+            <div class="help-header">
+                <div class="help-title">VimDoc Reader - Command Reference</div>
+                <div class="help-subtitle">Navigate with j/k, press q or Esc to close</div>
+            </div>
+            
+            <div class="help-section">
+                <div class="help-section-title">Basic Navigation</div>
+                <div class="help-command">h, j, k, l        <span class="help-desc">Move left, down, up, right</span></div>
+                <div class="help-command">w, b, e           <span class="help-desc">Jump to word start/end</span></div>
+                <div class="help-command">gg, G             <span class="help-desc">Go to document start/end</span></div>
+                <div class="help-command">:n                <span class="help-desc">Jump to page n</span></div>
+                <div class="help-command">0, $, ^           <span class="help-desc">Go to line start/end/first char</span></div>
+            </div>
+            
+            <div class="help-section">
+                <div class="help-section-title">Screen Movement</div>
+                <div class="help-command"><span class="help-key">Ctrl</span>+f, <span class="help-key">Ctrl</span>+b      <span class="help-desc">Page down/up</span></div>
+                <div class="help-command"><span class="help-key">Ctrl</span>+d, <span class="help-key">Ctrl</span>+u      <span class="help-desc">Half page down/up</span></div>
+                <div class="help-command">zz, zt, zb        <span class="help-desc">Center/top/bottom viewport</span></div>
+                <div class="help-command">gj, gk            <span class="help-desc">Move by visual line (wrapped text)</span></div>
+            </div>
+            
+            <div class="help-section">
+                <div class="help-section-title">Document Structure Navigation</div>
+                <div class="help-command">]]                <span class="help-desc">Next section/heading</span></div>
+                <div class="help-command">[[                <span class="help-desc">Previous section/heading</span></div>
+                <div class="help-command">]}                <span class="help-desc">Next paragraph</span></div>
+                <div class="help-command">[{                <span class="help-desc">Previous paragraph</span></div>
+            </div>
+            
+            <div class="help-section">
+                <div class="help-section-title">Search & Find</div>
+                <div class="help-command">/pattern          <span class="help-desc">Search forward for pattern</span></div>
+                <div class="help-command">?pattern          <span class="help-desc">Search backward for pattern</span></div>
+                <div class="help-command">n, N              <span class="help-desc">Next/previous search match</span></div>
+                <div class="help-command">*, #              <span class="help-desc">Search for word under cursor</span></div>
+                <div class="help-command">:noh              <span class="help-desc">Clear search highlighting</span></div>
+                <div class="help-command">f{char}, F{char}  <span class="help-desc">Find next/prev occurrence in line</span></div>
+                <div class="help-command">t{char}, T{char}  <span class="help-desc">Go to before/after char in line</span></div>
+                <div class="help-command">;, ,              <span class="help-desc">Repeat last find command</span></div>
+            </div>
+            
+            <div class="help-section">
+                <div class="help-section-title">Bookmarks & History</div>
+                <div class="help-command">m{a-z}            <span class="help-desc">Set bookmark labeled a-z</span></div>
+                <div class="help-command">'a                <span class="help-desc">Jump to bookmark a</span></div>
+                <div class="help-command">:marks            <span class="help-desc">List all bookmarks</span></div>
+                <div class="help-command"><span class="help-key">Ctrl</span>+o, <span class="help-key">Ctrl</span>+i      <span class="help-desc">Go back/forward in jump list</span></div>
+                <div class="help-command">g;, g,            <span class="help-desc">Go to position of last/newer edit</span></div>
+            </div>
+            
+            <div class="help-section">
+                <div class="help-section-title">View Controls</div>
+                <div class="help-command">:set linebreak    <span class="help-desc">Toggle line wrapping at word boundaries</span></div>
+                <div class="help-command">:set wrap/nowrap   <span class="help-desc">Toggle line wrapping</span></div>
+                <div class="help-command">:set nu/nonu       <span class="help-desc">Toggle line numbers</span></div>
+                <div class="help-command">+, -, =           <span class="help-desc">Increase/decrease/reset font size</span></div>
+            </div>
+            
+            <div class="help-section">
+                <div class="help-section-title">Document Management</div>
+                <div class="help-command">:w                <span class="help-desc">Save annotations/notes</span></div>
+                <div class="help-command">:e filename       <span class="help-desc">Open document</span></div>
+                <div class="help-command">:q, :qa           <span class="help-desc">Close document/all documents</span></div>
+                <div class="help-command">:wq               <span class="help-desc">Save and close</span></div>
+                <div class="help-command">:ls               <span class="help-desc">List all open documents</span></div>
+            </div>
+            
+            <div id="help-position">--More-- (j:next, k:prev, q:quit)</div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
